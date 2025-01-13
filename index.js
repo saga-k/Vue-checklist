@@ -8,20 +8,26 @@ app.component('list', {
 
   data() {
     return {
-      listItems: [
-
-      ]
+      listItems: [],
+      displayInput: false,
+      plusIcon: 'assets/plus-solid.svg'
     }
   },
 
   template: `
   <ul>
       <div v-for='listItem in listItems' :class = "{checked: listItem.checked}" class = "renderedList">
-        <input :checked = "listItem.checked" type = 'checkbox' value = listItem.task @click = checkItem(listItem)>
-        <li>{{listItem.task}}</li>
+        <div class = 'left'>
+          <input :checked = "listItem.checked" type = 'checkbox' value = listItem.task @click = checkItem(listItem)>
+          <li>{{listItem.task}}</li>
+        </div>
         <div class=removeIcon @click = "removeItem(listItem)"></div>
       </div>
-    <addNew @add-item="receiveEmit"></addNew>
+
+      <div class='finalRow'>
+      <div id='addButton' @click = 'toggleInput'><img id = plusIcon :src=plusIcon></div>
+      <addNew v-if='displayInput === true' @add-item="receiveEmit"></addNew>
+      </div>
   </ul>
   `,
 
@@ -46,6 +52,14 @@ app.component('list', {
       };
 
       this.setStorage();
+    },
+
+    toggleInput() {
+      if (this.displayInput === false) {
+        this.displayInput = true
+      } else {
+        this.displayInput = false
+      }
     },
 
     receiveEmit(newTask) {
@@ -81,7 +95,7 @@ app.component('addNew', {
   emits: ['add-item'],
 
   template: `
-  <input type="text" v-model = 'newTask'></input>
+  <input @keyup.enter = 'onClick' type="text" v-model = 'newTask'></input>
   <button @click='onClick'>add</button>
 `,
 
