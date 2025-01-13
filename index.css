@@ -1,0 +1,14 @@
+.renderedList {
+  display: flex;
+  list-style: none;
+}
+
+.removeIcon {
+  background-color: black;
+  height: 1em;
+  width: 1em;
+}
+
+.checked {
+  text-decoration: line-through;
+}
