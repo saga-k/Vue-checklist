@@ -96,7 +96,7 @@ app.component('addNew', {
 
   template: `
   <input @keyup.enter = 'onClick' type="text" v-model = 'newTask'></input>
-  <button @click='onClick'>add</button>
+  <button @click='onClick' @keyup.enter = 'onClick'>add</button>
 `,
 
   methods: {
