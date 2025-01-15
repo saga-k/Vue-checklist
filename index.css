@@ -7,14 +7,18 @@
 #app {
   background-color: #042940;
   margin: auto;
+}
 
+p,
+li {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #wrapper {
   padding: 2rem;
   background-color: white;
-  width: fit-content;
-  max-width: 85%;
+  width: 85%;
+
   border-radius: 5px;
   margin: auto;
   margin-top: 5vh;
@@ -50,6 +54,7 @@ ul {
 
 .finalRow {
   display: flex;
+  gap: 1rem;
 }
 
 #addButton {
@@ -60,9 +65,14 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -6px;
 }
 
 #plusIcon {
   width: 12px;
   height: 12px;
+}
+
+#inputField {
+  flex-grow: 1;
 }

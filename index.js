@@ -95,7 +95,7 @@ app.component('addNew', {
   emits: ['add-item'],
 
   template: `
-  <input @keyup.enter = 'onClick' type="text" v-model = 'newTask'></input>
+  <input id = 'inputField' @keyup.enter = 'onClick' type="text" v-model = 'newTask'></input>
   <button @click='onClick' @keyup.enter = 'onClick'>add</button>
 `,
 
