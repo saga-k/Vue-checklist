@@ -9,8 +9,6 @@ This is a simple to-do list built using Vue.js. The project was created as a way
   - Demo
 - My process
   - Built with
-  - What I learned
-  - Continued development
 
 ## Overview
 
