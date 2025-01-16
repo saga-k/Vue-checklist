@@ -5,13 +5,15 @@
 }
 
 #app {
-  background-color: #042940;
+  background-color: #4633b0;
   margin: auto;
 }
 
 p,
-li {
+li,
+h1 {
   font-family: Arial, Helvetica, sans-serif;
+  color: #303030;
 }
 
 #wrapper {
@@ -24,10 +26,34 @@ li {
   margin-top: 5vh;
 }
 
+.firstRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#addButton {
+  width: 24px;
+  height: 24px;
+  background-color: #5032F0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -5px;
+}
+
+#plusIcon {
+  width: 12px;
+  height: 12px;
+}
+
+
 ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .renderedList {
@@ -43,7 +69,7 @@ ul {
 }
 
 .removeIcon {
-  background-color: black;
+  background-image: url(assets/circle-xmark-regular.svg);
   height: 1em;
   width: 1em;
 }
@@ -57,22 +83,26 @@ ul {
   gap: 1rem;
 }
 
-#addButton {
-  width: 24px;
-  height: 24px;
-  background-color: lightgray;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: -6px;
-}
-
-#plusIcon {
-  width: 12px;
-  height: 12px;
-}
-
 #inputField {
   flex-grow: 1;
+  padding: 0.5rem;
+  border: solid 1px darkgrey;
+  border-radius: 5px;
+
+  &:focus {
+    outline: none;
+    border-color: #5032F0;
+  }
+}
+
+button {
+  width: 5rem;
+  background-color: #5032F0;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  accent-color: #5032F0;
 }

@@ -15,7 +15,12 @@ app.component('list', {
   },
 
   template: `
-  <ul>
+  <div class='firstRow'>
+  <h1>My Todolist</h1>
+  <div id='addButton' @click = 'toggleInput'><img id = plusIcon :src=plusIcon></div>
+  </div>
+  
+  <ul v-if = "listItems !== []">
       <div v-for='listItem in listItems' :class = "{checked: listItem.checked}" class = "renderedList">
         <div class = 'left'>
           <input :checked = "listItem.checked" type = 'checkbox' value = listItem.task @click = checkItem(listItem)>
@@ -23,12 +28,18 @@ app.component('list', {
         </div>
         <div class=removeIcon @click = "removeItem(listItem)"></div>
       </div>
-
-      <div class='finalRow'>
-      <div id='addButton' @click = 'toggleInput'><img id = plusIcon :src=plusIcon></div>
-      <addNew v-if='displayInput === true' @add-item="receiveEmit"></addNew>
-      </div>
   </ul>
+
+  <div v-else>
+  <h3>No tasks</h3>
+  <p>Add a new task by clicking the plus sign</p>
+  </div>
+
+
+  <div class='finalRow'>
+    <addNew v-if='displayInput === true' @add-item="receiveEmit" @cancel-new = "toggleInput"></addNew>
+  </div>
+  
   `,
 
   methods: {
@@ -95,14 +106,20 @@ app.component('addNew', {
   emits: ['add-item'],
 
   template: `
-  <input id = 'inputField' @keyup.enter = 'onClick' type="text" v-model = 'newTask'></input>
-  <button @click='onClick' @keyup.enter = 'onClick'>add</button>
+  
+  <input id = 'inputField' @keyup.enter = 'onClick' @keyup.esc = "onEsc" type="text" v-model = 'newTask'></input>
+  <button @click='onClick'>add</button>
 `,
 
   methods: {
     onClick() {
       this.$emit('add-item', this.newTask);
       this.newTask = ''
+    },
+
+    onEsc() {
+      this.newTask = ''
+      this.$emit('cancel-new')
     }
   }
 })
